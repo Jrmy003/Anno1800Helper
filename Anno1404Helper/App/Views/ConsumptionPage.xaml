@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Anno1404Helper.App.ViewModels"
+             Title="Consumptions"
+             xmlns:models="clr-namespace:Anno1404Helper.App.Models"
+             x:Class="Anno1404Helper.App.Views.ConsumptionPage"
+             x:DataType="viewModels:ConsumptionViewModel">
+
+
+    <ScrollView VerticalOptions="Fill">
+        <VerticalStackLayout >
+            <ListView x:Name="LvNeeds" ItemsSource="{Binding Needs }"
+                            HasUnevenRows="True"
+                            ItemSelected="ListView_OnItemSelected"
+                            SelectionMode="Single"
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Fill">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:NeedModel">
+                        <ViewCell>
+                            <Border
+                                Padding="2"
+                                Margin="5">
+                                <Grid ColumnDefinitions="50,100,*,35,50" RowDefinitions="50">
+                                    <Image Grid.Column="0" Source="{Binding Factory.Icon}" />
+                                    <Label Grid.Column="1" Text="{Binding Factory.Name}" />
+                                    <ProgressBar Grid.Column="2" Progress="{Binding FactoryDecimalUsage}" />
+                                    <Label Grid.Column="3" Text="{Binding FactoryPercentUsage, StringFormat='{0:F0}%'}" />
+                                    <Label Grid.Column="4"
+                                           FontAttributes="Bold"
+                                           Text="{Binding NbFactoriesNeeded,
+                            StringFormat='{0:F0}'}" />
+                                </Grid>
+                            </Border>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

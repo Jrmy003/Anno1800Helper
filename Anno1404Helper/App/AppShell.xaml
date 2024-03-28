@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Anno1404Helper.App.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Anno1404Helper"
+    xmlns:views="clr-namespace:Anno1404Helper.App.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Anno1404Helper">
+    
+    <ShellContent
+        Title="Population Levels"
+        ContentTemplate="{DataTemplate views:PopulationLevelsPage}"
+        Route="PopulationLevelsPage" />
+    
+    <ShellContent
+        Title="Consumption"
+        ContentTemplate="{DataTemplate views:ConsumptionPage}"
+        Route="ConsumptionPage" />
+
+</Shell>
