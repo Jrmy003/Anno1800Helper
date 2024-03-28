@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Anno1800Helper.App.ViewModels"
+             xmlns:models="clr-namespace:Anno1800Helper.App.Models"
+             Title="Production Chains"
+             x:Class="Anno1800Helper.App.Views.ProductionChainsPage"
+             x:DataType="viewModels:ProductionChainsViewModel">
+    <ScrollView>
+        <VerticalStackLayout>
+            <!-- Production Chain -->
+            <ListView ItemsSource="{Binding ProductionChains }"
+                      HasUnevenRows="True"
+                      SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:InputModel">
+                        <ViewCell>
+                            <Border
+                                Padding="2"
+                                Margin="5">
+                                <Grid ColumnDefinitions="50,*,50" RowDefinitions="50">
+                                    <Image Grid.Column="0" Source="{Binding ChildFactory.Icon}" />
+                                    <Label Grid.Column="1" Text="{Binding ChildFactory.Name}" />
+                                    <Label Grid.Column="2"
+                                           Text="{Binding NeededFactories,
+                                StringFormat='{0:F0}'}" />
+                                </Grid>
+                            </Border>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!-- Templates -->
+            <ListView ItemsSource="{Binding Templates }"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:InputModel">
+                        <ViewCell>
+                            <Border
+                                Padding="2"
+                                Margin="5">
+                                <Grid ColumnDefinitions="*" RowDefinitions="50,*">
+                                    <Image Grid.Column="0" Grid.Row="0" Source="{Binding ChildFactory.Icon}" />
+                                    <Image Grid.Column="0" Grid.Row="1" Source="{Binding ChildFactory.Template}" />
+                                </Grid>
+                            </Border>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
