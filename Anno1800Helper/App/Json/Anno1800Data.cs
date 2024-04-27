@@ -77,6 +77,13 @@ public class PopulationLevel
     public int? ResidenceUpgradeAmountMaxPercent { get; set; }
     public string Base64Icon { get; set; }
 }
+public class PopulationGroup
+{
+    public int Guid { get; set; }
+    public LocaText LocaText { get; set; }
+    public string Name { get; set; }
+    public List<int> PopulationLevels { get; set; }
+}
 
 public class Product
 {
@@ -114,7 +121,7 @@ public class Anno1800Data
     public Dictionary<string, string> Icons { get; set; }
     public List<object> Items { get; set; }
     public List<string> Languages { get; set; }
-    public List<object> PopulationGroups { get; set; }
+    public List<PopulationGroup> PopulationGroups { get; set; }
     public List<PopulationLevel> PopulationLevels { get; set; }
     public List<ProductFilter> ProductFilter { get; set; }
     public List<Product> Products { get; set; }
